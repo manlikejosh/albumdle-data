@@ -18,7 +18,10 @@ albums.pop(0)
 token = 'ipACfctfqlQiRApGndTeBACoWkVlqsrIalJnZnKD'
 
 d = discogs_client.Client(
-    'manlikejosh/0.1', user_token=token)
+    'manlikejosh/0.1',
+    consumer_key='AhuOTdngvfKwljMbXaKs',
+    consumer_secret='wXLXWzdrMJCaEkdfVRFywrYSXTGmGdfS',
+    user_token=token)
 
 
 @dataclass
@@ -30,6 +33,7 @@ class Album:
     genres: list
     style: list
     tracklist: str
+    image: list
 
 
 # iniate the holder array
@@ -52,6 +56,8 @@ for album in albums:
             this_album.append(search_album.styles)
             num_tracks = search_album.tracklist
             this_album.append(len(num_tracks))
+            # this_album.append(search_album.images[0])
+            # print(search_album.images[0])
 
             to_json.append(Album(*this_album).__dict__)
 
