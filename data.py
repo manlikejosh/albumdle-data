@@ -2,6 +2,7 @@ from dataclasses import dataclass
 import discogs_client
 import csv
 import json
+import os
 
 PATH = "/Users/josh/albumdle-data/albums.json"
 
@@ -15,12 +16,13 @@ albums.pop(0)
 
 
 # set up api token and connect to client
-token = 'ipACfctfqlQiRApGndTeBACoWkVlqsrIalJnZnKD'
+# keys come from environment variables so they don't end up on github
+token = os.environ['DISCOGS_USER_TOKEN']
 
 d = discogs_client.Client(
     'manlikejosh/0.1',
-    consumer_key='AhuOTdngvfKwljMbXaKs',
-    consumer_secret='wXLXWzdrMJCaEkdfVRFywrYSXTGmGdfS',
+    consumer_key=os.environ['DISCOGS_CONSUMER_KEY'],
+    consumer_secret=os.environ['DISCOGS_CONSUMER_SECRET'],
     user_token=token)
 
 
